@@ -1,4 +1,4 @@
-package com.book.community.controllers;
+package com.pwm.community.controllers;
 
 
 import org.springframework.stereotype.Controller;

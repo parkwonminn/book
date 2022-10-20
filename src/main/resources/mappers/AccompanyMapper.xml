@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pwm.community.mappers.IAccompanyMapper">
+    <delete id="deleteArticle">
+        delete
+        from bookreport_accompany.`article`
+        where `index` = #{index}
+        limit 1
+    </delete>
+
+    <insert id="insertArticle"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.pwm.community.entities.accompany.ArticleEntity">
+        insert into `bookreport_accompany`.`article` (`user_id`, `created_at`, `title`, `cover_image`,
+                                                      `cover_image_mime`,
+                                                      `content`, `like`)
+        values (#{userId}, #{createdAt}, #{title}, #{coverImage}, #{coverImageMime}, #{content}, #{like})
+    </insert>
+
+    <insert id="insertComment"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.pwm.community.entities.accompany.CommentEntity">
+        insert into `bookreport_accompany`.`comment`(`comment`, `created_at`, `user_id`, `post_id`, `comment_like`)
+        values (#{comment}, #{createdAt}, #{userId}, #{postId}, #{commentLike})
+    </insert>
+
+</mapper>

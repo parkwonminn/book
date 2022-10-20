@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pwm.community.mappers.IMemberMapper">
+    <insert id="insertContactAuth"
+            useGeneratedKeys="true"
+            keyColumn="index"
+            keyProperty="index"
+            parameterType="com.pwm.community.entities.member.ContactAuthEntity">
+        insert into `bookreport_member`.`contact_auths` (`contact`, `code`, `salt`, `created_at`, `expires_at`, `expired_flag`)
+        values (#{contact}, #{code}, #{salt}, #{createdAt}, #{expiresAt}, #{isExpired})
+    </insert>
+
+    <insert id="insertUser"
+            parameterType="com.pwm.community.entities.member.UsersEntity">
+        insert into `bookreport_member`.`users` (`email`, `password`, `name`, `contact`, `status_value`, `nickname`,
+                                                 `admin_flag`)
+        values (#{email}, #{password}, #{name}, #{contact}, #{statusValue}, #{nickname}, #{isAdmin})
+    </insert>
+
+</mapper>

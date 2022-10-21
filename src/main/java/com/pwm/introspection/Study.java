@@ -15,7 +15,10 @@ public class Study {
         //Html
 
         //th:fragment : header, footer 를 쓰기 위해 사용한 타임리프
-
+        //form : 사용자의 의견이나 정보를 알기 위해 입력할 큰 틀을 만드는데 사용. 폼은 입력된 데이터를 한 번에 서버로 전송.
+        //form 의 속성 : id : javascript 에서 접근 목적. 현 페이지에서 한 개만이 유효 == Javascript
+        //class : js에서도 접근이 가능하지만, 일단은 css에서 디자인적인 요소인 경우가 많다. == css 쪽에서 주로 사용, 현 페이지에서 다중으로 설정이 가능하다.
+        //h2 : 제목
 
         //back-end
 
@@ -23,9 +26,16 @@ public class Study {
         // Mapping 파일에 있는 SQL 을 자바 인터페이스를 통하여 호출할 수 있도록 해준다.
 
         // MyBatis Mapper XML (SQL Mapping XML) File 은 실행할 SQL 문을 정의해 놓은 파일.
-        // SQL문 실행을 위해 Parameter Object 를 받아오거나 SQL 문 실행 결과를 Result Obejct 에 자동 바인딩하는 기능 등을 제공한다.
+        // SQL 문 실행을 위해 Parameter Object 를 받아오거나 SQL 문 실행 결과를 Result Object 에 자동 바인딩하는 기능 등을 제공한다.
+        //@RequestMapping : 특정 uri 로 요청을 보내면 Controller 에서 어떠한 방식으로 처리할지 정의를 한다. 이때 들어온 요청을 특정 메서드와 매핑하기 위해 사용하는 것이 @RequestMapping 이다.
 
         // @Autowired : 의존성 주입을 할 때 사용하는 Annotation 으로 의존 객체의 타입에 해당하는 bean 을 찾아 주입하는 역할을 한다.
+
+        //@SessionAttribute("myData")의 의미 -. 특정 컨트롤러 클래스에 @SessionAttribute 가 선언되어 있으면
+        //해당 Controller 클래스의 특정 메소드에서 "myData"라는 이름으로
+        // Model 객체에 저장되는 데이터가 있다면 그 데이터를 세션(HttpSession)에도 자동으로 저장하라는 어노테이션이다.
+
+        //@...(required = false) : required 속성을 추가하면 해당 필드가 쿼리스트링에 존재하지 않아도 예외가 발생하지 않습니다.
 
         //MyBatis Mapper(Mapper.xml) :
 

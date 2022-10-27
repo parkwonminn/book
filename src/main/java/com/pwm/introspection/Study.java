@@ -4,21 +4,23 @@ public class Study {
     public static void main(String[] args) {
         // 웹개발 하며 알게된것, 배웠으나 몰랐던것, 까먹었던것 등등
 
-        //Mysql,maria-db
-
+        //Mysql,maria-db :
         //Mysql,maria_db - CURRENT_TIMESTAMP() : 특정 행을 입력할때 자동 생성 시간을 넣어 두고 싶을 때 자동으로 입력됨.
         //Mysql,maria_db - unique : 해당 필드에는 더 이상 중복된 값을 저장 x
         //Mysql,maria_db - unsigned : 음수를 포함 x 혹은 양수를 더 넓게 사용 가능하게 만들어줌. 예시: -21억 x , + 42억 O
         // auto-increment(자동으로 num 값 증가) 을 사용할때 쓰기 좋다.
         //Mysql,maria_db - NOW() : 현재 시간을 가져온다.
 
-        //Html
-
+        //Html :
         //th:fragment : header, footer 를 쓰기 위해 사용한 타임리프
         //form : 사용자의 의견이나 정보를 알기 위해 입력할 큰 틀을 만드는데 사용. 폼은 입력된 데이터를 한 번에 서버로 전송.
         //form 의 속성 : id : javascript 에서 접근 목적. 현 페이지에서 한 개만이 유효 == Javascript
         //class : js에서도 접근이 가능하지만, 일단은 css에서 디자인적인 요소인 경우가 많다. == css 쪽에서 주로 사용, 현 페이지에서 다중으로 설정이 가능하다.
         //h2 : 제목
+        //autofocus : <input> 태그의 autofocus 속성은 페이지가 로드될 때 자동으로 포커스(focus)가 <input> 요소로 이동됨을 명시
+        //(화면에 들어가면 바로 입력될수 있도록 줄뜨는거)
+
+
 
         //back-end
 
@@ -35,10 +37,13 @@ public class Study {
         //해당 Controller 클래스의 특정 메소드에서 "myData"라는 이름으로
         // Model 객체에 저장되는 데이터가 있다면 그 데이터를 세션(HttpSession)에도 자동으로 저장하라는 어노테이션이다.
 
+        //@Component : di(스프링이 다른 프레임워크와 차별화되어 제공하는 의존 관계 주입 기능, 객체를 직접 생성하는 것이 아니라외부에서 생성한 후 주입시켜주는 방식이다.) 를 위한 어노테이션. @Service, @Controller, @Repository 등은 @Component 를 상속 받고 있습니다. @Service 는 @Component 와 기능상의 차이는 없습니다.
+        //@Component 는 원형, 즉 기능을 수행하는 라이브러리 성격에 붙여 주시면 될거같고,
+        //@Service 는 비즈니스 로직을 구현하는 객체에 사용하면 될거같습니다.
+
         //@...(required = false) : required 속성을 추가하면 해당 필드가 쿼리스트링에 존재하지 않아도 예외가 발생하지 않습니다.
 
         //MyBatis Mapper(Mapper.xml) :
-
         // useGeneratedKeys 속성을 사용할 때 keyColumn, keyProperty 속성이 같이 쓰입니다.
         // useGeneratedKeys : insert(db 값에 넣는) autoincrement 가 걸린 PK(프라이머리) 값을 바로 사용하기 위해 사용.
         // keyColumn : [PK 컬럼명] 예 : index

@@ -37,4 +37,15 @@ public class MemberController {
         modelAndView.setViewName("member/userLogin");
         return modelAndView;
     }
+
+    @RequestMapping(value = "userRegister", method = RequestMethod.GET)
+    public ModelAndView getUserRegister(@SessionAttribute(value = UsersEntity.ATTRIBUTE_NAME, required = false)UsersEntity user,
+                                        ModelAndView modelAndView) {
+        if (user != null) {
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
+        }
+        modelAndView.setViewName("member/userRegister");
+        return modelAndView;
+    }
 }

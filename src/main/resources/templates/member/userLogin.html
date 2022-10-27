@@ -7,6 +7,33 @@
 </head>
 <body>
 <th:block th:replace="~{fragments/header.html :: content}"></th:block>
-나와라
+<main>
+    <form class="login-form" id="form">
+        <h2 class="title">로그인</h2>
+        <label class="object-label">
+            <span hidden>이메일</span>
+            <input autofocus class="_object-input" maxlength="50" name="email" placeholder="이메일" type="email">
+        </label>
+        <label class="_object-label">
+            <span hidden>비밀번호</span>
+            <input class="_object-input" maxlength="50" name="password" placeholder="비밀번호" type="password">
+        </label>
+        <span class="warning" id="warning"></span>
+        <input class="_object-button login-button" type="submit" value="로그인">
+        <ul class="menu">
+            <li class="item">
+                <a class="link" th:href="@{/}">이메일 찾기</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{/}">비밀번호 찾기</a>
+            </li>
+            <li class="item">
+                <a class="link" th:href="@{/member/userRegister}">회원가입</a>
+            </li>
+        </ul>
+    </form>
+
+</main>
+<th:block th:replace="~{fragments/footer.html :: content}"></th:block>
 </body>
 </html>

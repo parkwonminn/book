@@ -2,11 +2,11 @@ package com.pwm.community.entities.member;
 
 import java.util.Objects;
 
-public class UsersEntity {
+public class UserEntity {
     public static final String ATTRIBUTE_NAME = "memberUser";
     public static final String ATTRIBUTE_NAME_PLURAL = "memberUsers";
 
-    public static UsersEntity build() {return new UsersEntity();}
+    public static UserEntity build() {return new UserEntity();}
 
     private String email;
     private String password;
@@ -16,10 +16,10 @@ public class UsersEntity {
     private String nickname;
     private boolean isAdmin= false;
 
-    public UsersEntity() {
+    public UserEntity() {
     }
 
-    public UsersEntity(String email, String password, String name, String contact, String statusValue, String nickname, boolean isAdmin) {
+    public UserEntity(String email, String password, String name, String contact, String statusValue, String nickname, boolean isAdmin) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -33,7 +33,7 @@ public class UsersEntity {
         return email;
     }
 
-    public UsersEntity setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -42,7 +42,7 @@ public class UsersEntity {
         return password;
     }
 
-    public UsersEntity setPassword(String password) {
+    public UserEntity setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -51,7 +51,7 @@ public class UsersEntity {
         return name;
     }
 
-    public UsersEntity setName(String name) {
+    public UserEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -60,7 +60,7 @@ public class UsersEntity {
         return contact;
     }
 
-    public UsersEntity setContact(String contact) {
+    public UserEntity setContact(String contact) {
         this.contact = contact;
         return this;
     }
@@ -69,7 +69,7 @@ public class UsersEntity {
         return statusValue;
     }
 
-    public UsersEntity setStatusValue(String statusValue) {
+    public UserEntity setStatusValue(String statusValue) {
         this.statusValue = statusValue;
         return this;
     }
@@ -78,7 +78,7 @@ public class UsersEntity {
         return nickname;
     }
 
-    public UsersEntity setNickname(String nickname) {
+    public UserEntity setNickname(String nickname) {
         this.nickname = nickname;
         return this;
     }
@@ -87,7 +87,7 @@ public class UsersEntity {
         return isAdmin;
     }
 
-    public UsersEntity setAdmin(boolean admin) {
+    public UserEntity setAdmin(boolean admin) {
         isAdmin = admin;
         return this;
     }
@@ -96,7 +96,7 @@ public class UsersEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsersEntity that = (UsersEntity) o;
+        UserEntity that = (UserEntity) o;
         return Objects.equals(email, that.email);
     }
 

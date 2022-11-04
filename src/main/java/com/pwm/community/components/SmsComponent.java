@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -20,7 +24,7 @@ public class SmsComponent {
 
     private static final String CALLER = "01088517089";
 
-    public int send(String to, String content) throws NoSuchAlgorithmException, InvalidKeyException {
+    public int send(String to, String content) throws NoSuchAlgorithmException, InvalidKeyException, IOException {
         //long 타입 : 정수형 에서 가장 큰 타입. 8byte
         //System.currentTimeMillis() : 현재시각을 밀리세컨드 단위로 반환한다.
         long timestamp = System.currentTimeMillis();
@@ -32,16 +36,34 @@ public class SmsComponent {
         //비밀키를 생성한다. SmsComponent.SECRET_KEY 를 getBytes(StandardCharsets.UTF_8) : Byte 단위(UTF_8)형식으로, 알고리즘 이름은 HmacSHA256 이다.
         SecretKeySpec secretKeySpec =
                 new SecretKeySpec(SmsComponent.SECRET_KEY.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
-
-        /
         Mac mac = Mac.getInstance("HmacSHA256");
         mac.init(secretKeySpec);
-        byte[] rawHmac =mac.doFinal(signature.getBytes(StandardCharsets.UTF_8));
+        byte[] rawHmac = mac.doFinal(signature.getBytes(StandardCharsets.UTF_8));
         signature = Base64.encodeBase64String(rawHmac);
 
+
         JSONObject bodyJson = new JSONObject();
-        bodyJson.put("type","SMS");
+        bodyJson.put("type", "SMS");
+        bodyJson.put("contentType", "COMM");
+        bodyJson.put("countryCode", "82");
+        bodyJson.put("from", SmsComponent.CALLER);
+        bodyJson.put("content", content);
 
+        HttpURLConnection connection = (HttpURLConnection) new URL(String.format("https://sens.apigw.ntruss.com/sms/v2/services/%s/messages", SmsComponent.SERVICE_ID)).openConnection();
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setUseCaches(false);
+        connection.setRequestProperty("Content-Type", "application/json");
+        connection.setRequestProperty("x-ncp-apigw-timestamp", Long.toString(timestamp));
+        connection.setRequestProperty("x-ncp-iam-access-key", SmsComponent.ACCESS_KEY);
+        connection.setRequestProperty("x-ncp-apigw-signature-v2", signature);
+        connection.setRequestMethod("POST");
+
+
+        try (DataOutputStream outputStream = new DataOutputStream(connection.getOutputStream())) {
+            outputStream.write(bodyJson.toString().getBytes(StandardCharsets.UTF_8));
+            outputStream.flush();
+        }
+        return connection.getResponseCode();
     }
-
 }

@@ -40,6 +40,8 @@ public class Study {
         //@Component : di(스프링이 다른 프레임워크와 차별화되어 제공하는 의존 관계 주입 기능, 객체를 직접 생성하는 것이 아니라외부에서 생성한 후 주입시켜주는 방식이다.) 를 위한 어노테이션. @Service, @Controller, @Repository 등은 @Component 를 상속 받고 있습니다. @Service 는 @Component 와 기능상의 차이는 없습니다.
         //@Component 는 원형, 즉 기능을 수행하는 라이브러리 성격에 붙여 주시면 될거같고,
         //@Service 는 비즈니스 로직을 구현하는 객체에 사용하면 될거같습니다.
+        //@Transactional : 정보가 일치 하지 않을 시 db로 넘거가지 않는다.
+
 
         //@...(required = false) : required 속성을 추가하면 해당 필드가 쿼리스트링에 존재하지 않아도 예외가 발생하지 않습니다.
 

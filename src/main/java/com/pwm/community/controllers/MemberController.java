@@ -1,7 +1,7 @@
 package com.pwm.community.controllers;
 
 
-import com.pwm.community.entities.member.UsersEntity;
+import com.pwm.community.entities.member.UserEntity;
 import com.pwm.community.services.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class MemberController {
 
 
     @RequestMapping(value = "userLogin", method = RequestMethod.GET)
-    public ModelAndView getUserLogin(@SessionAttribute(value = UsersEntity.ATTRIBUTE_NAME, required = false) UsersEntity user,
+    public ModelAndView getUserLogin(@SessionAttribute(value = UserEntity.ATTRIBUTE_NAME, required = false) UserEntity user,
                                      ModelAndView modelAndView) {
         if (user != null) {
 
@@ -39,7 +39,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "userRegister", method = RequestMethod.GET)
-    public ModelAndView getUserRegister(@SessionAttribute(value = UsersEntity.ATTRIBUTE_NAME, required = false)UsersEntity user,
+    public ModelAndView getUserRegister(@SessionAttribute(value = UserEntity.ATTRIBUTE_NAME, required = false) UserEntity user,
                                         ModelAndView modelAndView) {
         if (user != null) {
             modelAndView.setViewName("redirect:/");

@@ -11,10 +11,27 @@
     </insert>
 
     <insert id="insertUser"
-            parameterType="com.pwm.community.entities.member.UsersEntity">
+            parameterType="com.pwm.community.entities.member.UserEntity">
         insert into `bookreport_member`.`users` (`email`, `password`, `name`, `contact`, `status_value`, `nickname`,
                                                  `admin_flag`)
         values (#{email}, #{password}, #{name}, #{contact}, #{statusValue}, #{nickname}, #{isAdmin})
     </insert>
+
+    <select id="selectContactAuthByContactCodeSalt"
+            parameterType="com.pwm.community.entities.member.ContactAuthEntity"
+            resultType="com.pwm.community.entities.member.ContactAuthEntity">
+        SELECT `index`        AS `index`,
+               `contact`      AS `contact`,
+               `code`         AS `code`,
+               `salt`         AS `salt`,
+               `created_at`   AS `createdAt`,
+               `expires_at`   AS `expiresAt`,
+               `expired_flag` AS `isExpired`
+        FROM `bookreport_member`.`contact_auths`
+        WHERE `contact` = #{contact}
+          AND `code` = #{code}
+          AND `salt` = #{salt}
+        LIMIT 1
+    </select>
 
 </mapper>
